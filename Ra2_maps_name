@@ -1,0 +1,39 @@
+import os
+
+file_root = 'D:/Temp/800map/'
+
+list = os.listdir(file_root)
+
+for file_name in list:
+    # name_list = file_name.split('.')
+    # if len(name_list) == 2:
+    #     old_name = file_name
+    #     new_name = name_list[0] + '.mpr'
+    #     os.rename(old_name, new_name)
+    # else:
+    #     old_name = file_name
+    #     new_name = name_list[0:-1] + '.mpr'
+    #     os.rename(old_name, new_name)
+    
+    # a = file_name.replace('yrm', 'mpr')
+    # print(len(name_list))
+    if file_name.split('.')[-1] == 'yro':
+        os.remove(os.path.join(file_root, file_name))
+        continue  #如果文件的后缀名为'yro'，那么删除此文件，然后跳出回到循环中，进行下一个迭代。
+    if file_name.split('.')[-1] == 'mpr':
+        continue  #r如果文件的后缀名为'mpr'，那么跳出回到循环中，进行下一个迭代。
+    else:
+        old_name = file_name
+        new_name = file_name[0:-3] + 'mpr'
+        print('new_name:  ', new_name)
+        old_path = os.path.join(file_root, old_name)
+        new_path = os.path.join(file_root, new_name)
+        print('old_path: ', old_path)
+        os.rename(old_path, new_path)
+        print(old_name,'======>',new_name)
+# print(list)
+
+# name = 'abc 2.0-iiu-jkii.yrm'
+# # name_split = name.split('.')
+# # print(name_split)
+# print(name[0:-3])
